@@ -42,15 +42,17 @@ class BinarySearchTree:
 
 
   def for_each(self, cb):
+    cb(self.value)
     if self.right and self.left:
-      cb(self.right)
-      cb(self.left)
-      self.for_each(cb)
+      cb(self.right.value)
+      cb(self.left.value)
+      self.right.for_each(cb)
+      self.left.for_each(cb)
     elif self.right and not self.left:
-      cb(self.right)
-      self.for_each(cb)
+      cb(self.right.value)
+      self.right.for_each(cb)
     elif self.left and not self.right:
-      cb(self.left)
-      self.for_each(cb)
+      cb(self.left.value)
+      self.left.for_each(cb)
     else:
       pass
